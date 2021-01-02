@@ -16,10 +16,13 @@
                         <div class="col-10">
                             <a href="/post?id={{ $post->id }}">{{ $post->title }}</a>
                         </div>
-                        <div class="col-2">
+                        <div class="col-1">
+                            <a href="/edit-post?id={{ $post->id }}" class="btn btn-sm btn-primary"><ion-icon name="create-outline"></ion-icon></a>
+                        </div>
+                        <div class="col-1">
                             <form action="/delete-post?id={{ $post->id }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-sm btn-danger">X</button>
+                                <button type="submit" class="btn btn-sm btn-danger"><ion-icon name="trash-outline"></ion-icon></button>
                             </form>
                         </div>
                     </div>
@@ -45,15 +48,15 @@
                     <form action="/create-post" method="POST">
                     @csrf
                         <div class="col-12">
-                            <input class="w-100 form-control" id="post_title" name="title" type="text" placeholder="Title..." autocomplete="off" />
+                            <input class="w-100 form-control" name="title" type="text" placeholder="Title..." autocomplete="off" />
                         </div>
                         <br />
                         <div class="col-12">
-                            <textarea class="w-100 form-control" id="post_body" name="body" placeholder="Write some dope stuff..."></textarea>
+                            <textarea class="w-100 form-control" name="body" placeholder="Write some dope stuff..."></textarea>
                         </div>
                         <br />
                         <div class="col-12 text-right">
-                            <button type="submit" class="btn btn-primary" onClick="javascript:submitPost()">Submit Post</button>
+                            <button type="submit" class="btn btn-primary">Submit Post</button>
                         </div>
                     </form>
                 </div>

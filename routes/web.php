@@ -25,4 +25,8 @@ Route::post('/create-post', 'PostController@createPost');
 
 Route::post('/delete-post', 'PostController@deletePost');
 
+Route::get('/edit-post', 'PostController@getEdit');
+
 Route::get('/post', 'PostController@getPost');
+
+Route::post('/update-post', 'PostController@updatePost');

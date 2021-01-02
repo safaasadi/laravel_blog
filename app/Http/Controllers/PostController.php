@@ -57,4 +57,27 @@ class PostController extends Controller
         // returns the view of post blade file
         return view('post')->with('post', $post);
     }
+
+    public function getEdit(Request $request){
+        \Log::info($request);
+        if(! Post::where('id', $request['id'])->exists()){
+            return redirect('/home')->with('alert', 'Post not found.');
+        }
+
+        $post = Post::where('id', $request['id'])->first();
+
+        if ($post->author_id !== auth()->user()->id) {
+            return redirect('/home')->with('alert', 'You are not the author if that post.');
+        }
+
+        return view('edit_post')->with('postEdit', $post);
+    }
+
+    public function updatePost(Request $request){
+        $post = Post::where('id', $request['id'])->first();
+        $post->title = $request['title'];
+        $post->body = $request['body'];
+        $post->save();
+        return redirect('/home')->with('alert', 'Post created successfully!');
+    }
 }

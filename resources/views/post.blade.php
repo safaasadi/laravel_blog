@@ -21,18 +21,3 @@
 </div>
 @endsection
 
-@section('scripts')
-
-    @if(Session::has('alert'))
-    <script type="text/javascript">
-        Swal.fire({
-            title: 'Success!',
-            text: "{{ Session::get('alert') }}",
-            icon: 'success',
-            confirmButtonText: 'Thanks!'
-            })
-    </script>
-    @endif
-
-    
-@endsection
